@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Интернет-магазин</title>
+  </head>
+  <body>
+    <header>
+      <link rel="stylesheet" href="reset.css" />
+      <link rel="stylesheet" href="style.css" />
+      <div class="header-top">
+        <div class="logo">
+          <a href="#">
+            <img class="logo-img" src="img/logo.svg" alt="" />
+          </a>
+        </div>
+        <div><button class="btn-cart" type="button">Корзина</button></div>
+      </div>
+    </header>
+    <main>
+      <div class="products"></div>
+    </main>
+    <script src="js/main.js"></script>
+  </body>
+</html>
+
+<!-- Изначально после каждого товара на странице выводилась запятая. 
+  Это происходило из-за того, что строковое предстваление массива [a,b,c] имеет следующий вид "a,b,c". 
+  Для того чтобы избавиться от запятых воспользуеимся методом join. 
+  Для нагладности каждый блок будем разбивать переносом строки "/n".-->
