@@ -8,16 +8,16 @@
 header {
 }
 
-h3{
-    padding-top: 100px;
+h3 {
+  padding-top: 5px;
 }
 
-p{
-padding-top: 10px;
+p {
+  padding-top: 10px;
 }
 
 .header-top {
-    background-color: gray;
+  background-color: gray;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,7 +30,7 @@ padding-top: 10px;
 }
 
 .product-item {
-    background-color: gray;
+  background-color: gray;
   min-width: 200px;
   height: 250px;
   border: 1px solid #e6e6e6;
@@ -48,7 +48,7 @@ padding-top: 10px;
 }
 
 .price-text {
-  margin-top: 100px;
+  /*margin-top: 100px;*/
 }
 
 .buy-btn {
@@ -84,6 +84,10 @@ padding-top: 10px;
 }
 
 .btn-cart:hover {
-    color: #ab2b1d;
+  color: #ab2b1d;
   background-color: #ffffff;
+}
+
+.desc {
+  text-align: center;
 }

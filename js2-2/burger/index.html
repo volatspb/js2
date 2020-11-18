@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>burgers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+<body>
+    <div class="box">
+        <fieldset>
+            <legend>Гамбургер</legend>
+            <div class="row" id = "radio-size">
+                <p>Размер</p>
+                <div class="radio-variant">
+                    <input type="radio" name="size" id="small" value="SIZE_SMALL" checked />
+                    <label for="small">Маленький</label>
+                </div>
+                <div class="radio-variant">
+                    <input type="radio" name="size" id="large" value="SIZE_BIG" />
+                    <label for="large">Большой</label>
+                </div>
+                <hr>
+            </div>
+            <div class="row"id = "radio-stuff">
+                <p>Наполнение</p>
+                <div class="radio-variant">
+                    <input type="radio" name="stuff" id="cheese" value="STUFF_CHEESE" checked />
+                    <label for="cheese">Сыр</label>
+                </div>
+                <div class="radio-variant">
+                    <input type="radio" name="stuff" id="salad" value="STUFF_SALAD" />
+                    <label for="salad">Салат</label>
+                </div>
+                <div class="radio-variant">
+                    <input type="radio" name="stuff" id="potato" value="STUFF_POTATO" />
+                    <label for="potato">Картофель</label>
+                </div>
+            </div>
+            <hr>
+            <div class="row additions" id = "checkbox-toppings">
+                <p>Топпинг</p>
+                <div class="checkbox-topping">
+                    <input type="checkbox" name="add" id="spices" value="TOPPING_SPICES" />
+                    <label for="spices">Перец</label>
+                </div>
+                <div class="checkbox-topping">
+                    <input type="checkbox" name="add" id="mayon" value="TOPPING_MAYON" />
+                    <label for="mayon">Майонез</label>
+                </div>
+            </div>
+            <div class="submit" id = "submit">
+                <input type="submit" value="Рассчитать?" />
+            </div>
+        </fieldset>
+        <br />
+        <div id="result">
+            <div><b>Стоимость:</b> <span id="price">0</span> рублей</div>
+            <div><b>Калорийность:</b> <span id="calories">0</span> калорий</div>
+        </div>
+    </div>
+    <script defer src="main.js"></script>
+
+</body>
+
+</html>
