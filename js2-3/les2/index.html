@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Магазин</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="reset.css" />
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,500,600,700" rel="stylesheet">
+    -->
+  </head>
+
+  <body>
+    <header>
+      <!--<div class="header__left"> my shop</div>-->
+      <div class="header__right">
+
+        <div class="logo">
+          <a href="#">
+            <img class="logo-img" src="img/logo.svg" alt="" />
+          </a>
+        </div>
+
+        <form action="#" method="post" class="search-form">
+          <input type="text" class="search-field" />
+          <button class="btn-search" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+        
+        <div class="cart-linc-box">
+          <div class="logo">
+            <button class="btn-cart" type="button">Корзина</button>
+          </div>
+          <div class="drop-cart" id="cart">
+            <div class="drop-cart-under">
+              <p class="drop-cart-total-text">Итог</p>
+              <p class="drop-cart-total">руб.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="products"></div>
+    </main>
+    <script defer src="js/main.js"></script>
+  </body>
+</html>
