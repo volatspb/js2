@@ -1,6 +1,5 @@
 const API = `https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses`;
 
-// абстрактный класс каталог
 class List {
     constructor(url, container) {
         this.container = container;
@@ -31,7 +30,6 @@ class List {
         }
     }
 
-    // будет обрабатываться в каждом классе отдельно
     _init() { }
 
     getItem(id) {
@@ -52,7 +50,6 @@ class List {
     }
 }
 
-// абстрактный класс элемент
 class Item {
     constructor(elem, img = `https://placehold.it/200x150`) {
         this.id_product = elem.id_product;
@@ -72,21 +69,16 @@ class Item {
     }
 }
 
-
-// Класс каталог товаров
 class ProductsList extends List {
     constructor(cart, container = '.products') {
         super(`/catalogData.json`, container);
         this.cart = cart;
-        this.getJson() // Получаем промис 
+        this.getJson()
             .then(data => this.handleData(data))
     }
     _init() {
         const block = document.querySelector(this.container);
         block.addEventListener("click", event => {
-            // разные варианты, что лучше не знаю
-            //if(e.target.classList.contains('buy-btn')){
-            //if (event.target.tagName === "BUTTON") {
             if (event.target.textContent === "Купить") {
                 let id_product = +event.target.dataset["id"];
                 this.cart.addProduct(this.getItem(id_product), 1)
@@ -102,17 +94,14 @@ class ProductsList extends List {
     }
 }
 
-// Класс элемент каталога товаров
 class ProductItem extends Item { }
 
-
-// Класс корзина
 class Cart extends List {
     constructor(container = '.drop-cart') {
         super(`/getBasket.json`, container)
         this.getJson()
             .then(data => this.handleData(data.contents))
-            .then(a => this.cartPrice())// обновляем итог только после получения данных
+            .then(a => this.cartPrice())
 
     }
 
@@ -120,7 +109,6 @@ class Cart extends List {
         const block = document.querySelector(this.container);
         block.addEventListener('click', event => {
 
-            // проверяем что нажали на кнопку
             if (event.target.tagName === "BUTTON") {
                 let id_product = +event.target.dataset.id;
                 
@@ -141,33 +129,21 @@ class Cart extends List {
 
     }
 
-    cartText() { } // возвращает текущее представление корзины, например "Корзина пуста", "В корзине n товаров на s рублей"
+    cartText() { }
 
-    // добавляет товар в корзину, на вход id товара и количество
     addProduct(product, quantity = 1) {
 
         this.getJson(`${API}/addToBasket.json`)
             .then(data => {
                 if (data.result) {
 
-                    // ищем товар в корзине
                     let foundProduct = this.getItem(product.id_product);
-                    // если в корзине нет нужного товара то добавляем его
-
-                    if (!foundProduct) {
-                        //так было не красиво
-                        //let foundProduct = products.allProducts.find(x => x.id_product == id_product);
-                        // так лучше
+                    
+                        if (!foundProduct) {
                         let foundProduct = Object.assign({quantity: quantity}, product);
                         this.data = [foundProduct];
                         this._render();
-                        // тоже переделал
-                        //const product = new CartItem(foundProduct);
-                        //this.allProducts.push(product);
-                        //const block = document.querySelector(this.container);
-                        //block.insertAdjacentHTML('afterBegin', product.render());
-
-                        // если товар уже есть в корзине, то добавляем к найденой позиции количество (count + 1)
+                        
                     } else {
                         ++foundProduct.quantity;
                         let block = document.querySelector(`.drop-cart-product[data-id="${product.id_product}"]`);
@@ -182,7 +158,6 @@ class Cart extends List {
             })
     }
 
-    // удаляет товар из корзины, на вход id товара и количество
     removeProduct(product, quantity = 1) {
         this.getJson(`${API}/addToBasket.json`)
             .then(data => {
@@ -192,11 +167,9 @@ class Cart extends List {
                         let block = document.querySelector(`.drop-cart-product[data-id="${product.id_product}"]`);
                         --foundProduct.quantity;
                         if (foundProduct.quantity === 0) {
-                            // удалим из корзины
                             let index = this.allProducts.indexOf(foundProduct);
                             if (index >= 0) {
                                 this.allProducts.splice(index, 1);
-                                // удалим div из корзины
                                 block.remove();
                             }
                         } else {
@@ -209,20 +182,17 @@ class Cart extends List {
 
     }
 
-    // удаляет товар из корзины 
     ClearProduct(id_product) {
         let foundProduct = this.getItem(id_product);
         let index = this.allProducts.indexOf(foundProduct);
         if (index >= 0) {
             this.allProducts.splice(index, 1);
-            // удалим div из корзины
             let block = document.querySelector(`.drop-cart-product[data-id="${id_product}"]`);
             block.remove();
         }
         this.cartPrice();
     }
 
-    // возвращает количество товарв в корзине
     сartCount() {
         let sum = 0;
         for (let item of this.allProducts) {
@@ -230,7 +200,6 @@ class Cart extends List {
         }
         return sum;
     }
-    // Метод, определяет суммарную стоимость всех товаров.
     productsSum() {
         let sum = 0;
         for (let item of this.allProducts) {
@@ -238,7 +207,6 @@ class Cart extends List {
         }
         return sum;
     }
-    //  сумма корзины
     cartPrice() {
         let sum = this.productsSum();
         let block = document.querySelector(".drop-cart-total").textContent = sum + " руб";
@@ -246,14 +214,12 @@ class Cart extends List {
 
 }
 
-// Класс элемент корзины
 class CartItem extends Item {
     constructor(product, img = `https://placehold.it/100x75`, quantity = 1) {
         super(product, img)
-        this.quantity = quantity; // количество товара
+        this.quantity = quantity;
     }
 
-    // рендерит элемент корзины
     render() {
         return `<div class="drop-cart-product" data-id = ${this.id_product} '> 
                     <div class="drop-cart-div-img">
