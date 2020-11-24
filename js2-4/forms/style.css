@@ -1,0 +1,52 @@
+form {
+    display: block;
+    width: 360px;
+    border-radius: 4px;
+    margin: 40px auto;
+    padding: 10px;
+    box-shadow: #cecece 0 0 10px;
+}
+
+label {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input {
+    display: block;
+    width: 90%;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    padding: 10px;
+    border: #f7f7f7 solid 1px;
+    background: #f7f7f7;
+    color: black;
+
+}
+
+textarea {
+    display: block;
+    width: 90%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: #f7f7f7 solid 1px;
+    background: #f7f7f7;
+}
+
+button {
+    margin-bottom: 10px;
+    padding: 10px;
+    transition: all ease-in-out .2s;
+}
+.error {
+    color: #d32f2f;
+}
+.div-error {
+    border: #d32f2f solid 1px;
+}
+.div-ok {
+    border:green solid 1px;
+}
