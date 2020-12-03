@@ -1,4 +1,4 @@
-Vue.component('searchform', {   //searchform - название тега в ДОМ
+Vue.component('searchform', {
     props: ['value'],
     template: `
         <input type="text" class="search-field" 
